@@ -141,8 +141,7 @@ const config = {
 		XOR: {},
 		NAND: {},
 		NOR: {},
-    XNOR: {},
-    gnirp: {}
+    XNOR: {}
 	}
 };
 

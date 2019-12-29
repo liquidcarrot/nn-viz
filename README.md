@@ -23,10 +23,11 @@ And finally, a big thank you to all of you for supporting!
 nn-viz is a [Vue.js](https://github.com/vuejs/vue) project that displays the structure of a network. The actual network is being trained in a seperate thread in a web worker.
 
 ## Examples
-For examples on how to create such a worker and how to communicate with the visualization thread, see src/workers.
+For examples on how to create such a worker and how to communicate with the visualization thread, see `src/workers`.
 
 ## Configuration
-For configuration options to pass to the worker, see the `config` object in App.vue (Beware, this is subject to change. We will most likely move this object to a stand-alone .json or even .js file)
+For configuration options to pass to the worker, see the `config` object in App.vue (This is subject to change. We will most likely move this object to a stand-alone .json or even .js file)
+
 To create a new worker, just add an entry here. A new button will appear in the control section of the visualizer. If you click it, the new worker will be set as active and commands will be sent to this particular web worker.
 
 The web worker itself needs to have the same name and be created inside the src/workers directory.
@@ -68,10 +69,10 @@ This commands the worker to load a certain network. The network is a JSON format
 
 ### Outgoing messages
 The web worker updates the visualization via events. The update event takes the following arguments:
-* network: the JSON formatted network export
-* epoch: the currently completed training epoch
-* results: the actual activation values of the network compared to the input and ideal output
-* score: the score/error of the network. For simplicity, the property is just called `score`
+* `network`: the JSON formatted network export
+* `epoch`: the currently completed training epoch
+* `results`: the actual activation values of the network compared to the input and ideal output
+* `score`: the score/error of the network. For simplicity, the property is just called `score`
 
 #### network
 To export the network to JSON, simply call `network.toJSON`. To show activation values as part of the visualization, you need to manually add those.
@@ -96,3 +97,11 @@ self.postMessage({
   score: evaluation.score
 })
 ```
+
+## Coming up
+We encourage anyone who wants to debug any JS machine library to give it a try and give feedback. We have plans to continue developing it and extending its features, some of our planned updates:
+* A way to single step through the network (activation by activation)
+* Providing stand alone visualization components for use in other projects
+* A clearer definition of the format the visualizers take to make it easier to plug in networks of different libraries
+* More options for visualizers
+* Visualization of lineage in the evolutionary modes of _carrot_
