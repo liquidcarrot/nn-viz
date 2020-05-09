@@ -105,3 +105,6 @@ dist
 
 # VSCode history extension
 .history
+
+#IDEs
+.idea/
